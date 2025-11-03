@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  email     String   @unique
+  password  String
+  name      String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Candidate {
+  id                String  @id @default(auto()) @map("_id") @db.ObjectId
+  email             String  @unique
+  firstName         String
+  lastName          String
+  phone             String?
+  location          String?
+  yearsOfExperience Int     @default(0)
+
+  // Self-declared skills with ratings (0-10)
+  skills Skill[]
+
+  // Calculated tier based on skills assessment
+  tier      Int   @default(0) // 0-5
+  tierScore Float @default(0)
+
+  // Status
+  status String @default("registered") // registered, assessed, tier_assigned
+
+  // Email notification tracking
+  notificationSent Boolean @default(false)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([tier])
+  @@index([status])
+}
+
+model Skill {
+  id          String    @id @default(auto()) @map("_id") @db.ObjectId
+  candidateId String    @db.ObjectId
+  candidate   Candidate @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+
+  skillName   String
+  proficiency Int    @default(0) // 0-10 scale
+  yearsUsed   Int    @default(0)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([candidateId])
+}

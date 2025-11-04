@@ -9,7 +9,7 @@ async function bootstrap() {
 
   // Enable CORS
   app.enableCors({
-    origin: process.env.NODE_ENV === "production" ? ["https://your-frontend-domain.com"] : "*",
+    origin: process.env.NODE_ENV === "production" ? ["https://candidatize.vercel.app"] : "*",
     credentials: true,
   })
 

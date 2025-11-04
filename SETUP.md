@@ -185,10 +185,9 @@ FRONTEND_URL=http://localhost:3000
 | `NODE_ENV` | Environment (development/production) | `development` |
 | `JWT_SECRET` | Secret key for JWT tokens | `super_secret_key_123` |
 | `JWT_EXPIRATION` | Token expiration time | `24h` |
-| `EMAIL_SERVICE` | Email provider | `gmail` |
-| `EMAIL_USER` | Email account for sending | `your-email@gmail.com` |
-| `EMAIL_PASSWORD` | Email app password | `generated_app_password` |
-| `EMAIL_FROM` | Sender email address | `noreply@platform.com` |
+| `RESEND_API_KEY` | Email provider | `gmail` |
+| 
+| `RESEND_FROM_EMAIL` | Sender email address | `desisHub@info.com` |
 | `FRONTEND_URL` | Frontend URL for links | `http://localhost:3000` |
 
 ---

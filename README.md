@@ -2,6 +2,8 @@
 
 A comprehensive NestJS backend API for managing candidate registration, skill assessment, and automatic tier categorization.
 
+## DEMO URL https://candidatize-api.vercel.app/
+
 ## Features
 
 - **Authentication**: JWT-based admin authentication
@@ -153,11 +155,10 @@ npm run format
 
 - `DATABASE_URL`: MongoDB connection string
 - `JWT_SECRET`: Secret key for JWT signing
-- `SMTP_HOST`: Email SMTP server
-- `SMTP_PORT`: Email SMTP port
-- `SMTP_USER`: Email account username
-- `SMTP_PASS`: Email account password
-- `SMTP_FROM`: From email address
+- `RESEND_API_KEY`: Resend API Key
+- `RESEND_FROM_EMAIL`: From email address
+
+
 
 
 
